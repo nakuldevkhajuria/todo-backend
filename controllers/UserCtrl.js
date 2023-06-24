@@ -26,7 +26,7 @@ const enteredPassword = req.body.password;
 
 const findUser = await userModel.findOne({email});
 
-if( findUser  && (findUser.isPasswordMatched(enteredPassword))){
+if( findUser  && (await findUser.isPasswordMatched(enteredPassword))){
     res.json({
         _id: findUser._id,
         name:findUser.name,
@@ -53,7 +53,7 @@ const forgetPassword = asyncHandler(
     const user = await userModel.findOne({ mobile });
 console.log(mobile,password)
     if (!user) {
-      return res.json({ message: 'This Mobile number is not registered' });
+      return  res.json({ message: 'This Mobile number is not registered' });
     }
 
     // Generate new password
