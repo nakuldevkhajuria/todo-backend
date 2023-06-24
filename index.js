@@ -16,6 +16,7 @@ app.use(cors())
 app.get('/',(req,res)=>{
     res.send('helo')
 })
+app.use(express.urlencoded({ extended: true }));
 app.use('/user', mainRoute)
 
 
