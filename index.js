@@ -19,7 +19,7 @@ app.get('/',(req,res)=>{
 app.use('/user', mainRoute)
 
 
-app.listen(5000,()=>{
+app.listen(5000,async()=>{
     console.log('server is running on port 5000')
-    dbConnect();
+    await dbConnect();
 })

@@ -1,7 +1,7 @@
 
 const jwt = require("jsonwebtoken")
-const generateToken = (id) => {
+const generateToken = async(id) => {
     let secretKey = 'abajaba'
-    return jwt.sign({id}, secretKey, { expiresIn: "1d" })
+    return await jwt.sign({id}, secretKey, { expiresIn: "1d" })
 }
 module.exports = generateToken
