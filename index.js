@@ -13,7 +13,9 @@ const cors = require("cors")
 //   app.use(apiProxy);
 app.use(express.json())
 app.use(cors())
-
+app.get('/',(req,res)=>{
+    res.send('helo')
+})
 app.use('/user', mainRoute)
 
 
