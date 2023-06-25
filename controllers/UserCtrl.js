@@ -51,17 +51,13 @@ const forgetPassword = asyncHandler(
   try {
 
     const user = await userModel.findOne({ mobile });
-console.log(mobile,password)
+
     if (!user) {
-      return  res.json({ message: 'This Mobile number is not registered' });
+      return res.json({ message: 'This Mobile number is not registered' });
     }
 
-    // Generate new password
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-   
-    user.password = hashedPassword;
+    // Update the user's password using userModel's password hashing
+    user.password = password;
     await user.save();
 
     res.json({ message: 'Password has been changed successfully' });

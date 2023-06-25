@@ -8,18 +8,15 @@ const cors = require("cors")
 
 
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-    origin:"*"
-}))
-app.get('/',(req,res)=>{
-    res.send('helo')
-})
+// app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
-app.use('/user', mainRoute)
+
+app.use('/api/user', mainRoute)
 
 
 app.listen(5000,async()=>{
-    console.log('server is running on port 5000')
     await dbConnect();
+    console.log('server is running on port 5000')
+  
 })
